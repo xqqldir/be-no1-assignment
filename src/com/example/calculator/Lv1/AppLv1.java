@@ -1,7 +1,9 @@
-package com.example.calculator.lv1;
+package com.example.calculator.Lv1;
+import com.example.calculator.Lv2.CalculatorLv2;
+
 import java.util.*;
 
-public class App {
+public class AppLv1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -20,28 +22,30 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요 : "); //+ - * /
             char operator = sc.next().charAt(0);
 
-
+            int result = 0;
             switch (operator) {
                 case '+':
-                    System.out.println("덧셈 결과 : " + (firstNum + secondNum));
+                    result = firstNum + secondNum;
                     break;
                 case '-':
-                    System.out.println("뺼셈 결과 : " + (firstNum - secondNum));
+                    result = firstNum - secondNum;
                     break;
                 case '*':
-                    System.out.println("곱셈 결과 : " + (firstNum * secondNum));
+                    result = firstNum * secondNum;
                     break;
                 case '/':
                     if (secondNum != 0) {
-                        System.out.println("나눗셈 결과 : " + (firstNum / secondNum));
+                        result = firstNum / secondNum;
                     } else {
                         System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다. ");
                     }
                     break;
                 default:
-                    System.out.println("올바른 기호를 입력하세요. ( + - * / )");
-                    continue;
+                    System.out.println("올바른 기호를 입력하세요.");
+                    break;
             }
+
+            System.out.println("결과 : " + result);
 
             String answer;
             while (true){
