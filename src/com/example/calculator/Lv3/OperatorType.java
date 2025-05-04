@@ -1,27 +1,53 @@
 package com.example.calculator.Lv3;
 
 public enum OperatorType {
-    PLUS('+'),
-    MINUS('-'),
-    MULTIPLY('*'),
-    DIVIDE('/');
+    ADDITION('+'){
+        @Override
+        public double calculation(double a, double b){
+            return a + b;
+        }
+    },
 
-    private final char symbol;
+    SUBTRACTION('-'){
+        @Override
+        public double calculation (double a, double b){
+            return a - b;
+        }
+    },
 
-    OperatorType(char symbol) {
-        this.symbol = symbol;
+    MULTIPLICATION('*'){
+        @Override
+        public double calculation(double a, double b){
+            return a * b;
+        }
+    },
+
+    DIVISION('/'){
+        @Override
+        public double calculation(double a, double b){
+            return a / b;
+        }
+    };
+
+    public abstract double calculation(double a, double b);
+
+    private final char operator;
+
+    OperatorType(char operator){
+        this.operator = operator;
     }
 
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public static OperatorType fromChar(char ch) {
-        for (OperatorType op : values()) {
-            if (op.symbol == ch) {
-                return op;
-            }
+    public static OperatorType getOperatorType(char operator){
+        if(operator == '+'){
+            return OperatorType.ADDITION;
+        } else if(operator == '-'){
+            return OperatorType.SUBTRACTION;
+        } else if(operator == '*'){
+            return OperatorType.MULTIPLICATION;
+        } else if(operator == '/'){
+            return OperatorType.DIVISION;
         }
         return null;
     }
+
 }
